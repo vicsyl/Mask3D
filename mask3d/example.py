@@ -2,7 +2,7 @@ import numpy as np
 import torch
 from mask3d import get_model, load_mesh, prepare_data, map_output_to_pointcloud, save_colorized_mesh 
 
-def run_for_scene(model, ply_file):
+def run_for_scene(model, device, ply_file):
 
     # load input data
     # let's flatten in ...
@@ -33,14 +33,14 @@ def run():
     model.eval()
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model.to(device)
-    run_for_scene(model, "akitchen.ply")
-    run_for_scene(model, "aliving.ply")
-    run_for_scene(model, "bed.ply")
-    run_for_scene(model, "kitchen.ply")
-    run_for_scene(model, "mliving.ply")
-    run_for_scene(model, "luke.ply")
-    run_for_scene(model, "5a.ply")
-    run_for_scene(model, "5b.ply")
+    run_for_scene(model, device, "akitchen.ply")
+    run_for_scene(model, device, "aliving.ply")
+    run_for_scene(model, device, "bed.ply")
+    run_for_scene(model, device, "kitchen.ply")
+    run_for_scene(model, device, "mliving.ply")
+    run_for_scene(model, device, "luke.ply")
+    run_for_scene(model, device, "5a.ply")
+    run_for_scene(model, device, "5b.ply")
 
 
 if __name__ == "__main__":
